@@ -1,0 +1,26 @@
+{
+    "manifest_version": 2,
+    "name": "Crome Proxy Server to use interceptor",
+    "description": "The proxy server",
+    "version": "0.0.1",
+    "author": "Santosh Kumar Panigrahy",
+    "app": {
+        "background": {
+            "scripts": [
+                "background.js"
+            ]
+        }
+    },
+    "sockets": {       
+       "tcp": {
+         "connect": [""]
+       },
+       "tcpServer": {
+         "listen": ["*:*"]
+       }
+    },
+    "icons": {
+        "16": "calculator-16.png",
+        "128": "calculator-128.png"
+    }
+}
