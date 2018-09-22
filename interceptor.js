@@ -1,11 +1,17 @@
-var postmanInterceptor = "hpbgjfakchhedjccfnlfhiblljhnbnpb";
+function getPostmanInterceptorId() { 
+    return "aicmkgpgakddgnaphhhpliifpcfhicfo"; 
+}
+
+function getSelfId() {
+    return chrome.runtime.id;
+}
 var methodNeedsBody = ["POST", "PUT"]
 var requestQueue = {};
 var getPostmanMessage = function getPostmanMessage(incommingRequest) {
     var postmanInterceptorReq = {
         "postmanMessage": {
             guid: incommingRequest.connection.stream.sockId,
-            postmanAppId: 'alklgjjgdepdjdpfaechjphkpbdjcdek',
+            postmanAppId: getSelfId(),
             autoRedirect: true,
             type: 'xhrRequest',
             request: {
@@ -85,7 +91,10 @@ function sendMessageToInterceptor(request) {
     var interceptorRequest = getPostmanMessage(request);
     requestQueue[interceptorRequest.postmanMessage.guid] = request;
     chrome.runtime.sendMessage(
-        "hpbgjfakchhedjccfnlfhiblljhnbnpb", getPostmanMessage(request),
-        function(message) { console.log(message) }
+        getPostmanInterceptorId(),
+         getPostmanMessage(request),
+        function(message) { 
+            console.log(message);
+        }
     );
 }
