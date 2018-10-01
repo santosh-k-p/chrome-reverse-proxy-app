@@ -11,6 +11,9 @@
             ]
         }
     },
+    "permissions": [
+        "storage"
+    ],
     "sockets": {       
        "tcp": {
          "connect": [""]
